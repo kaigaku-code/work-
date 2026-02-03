@@ -28,27 +28,14 @@
     }
 
     .container {
-      position: relative;
       max-width: 1400px;
       margin: 0 auto;
-    }
-
-    .logo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 10;
-    }
-
-    .content {
-      padding-top: 20px;
     }
 
     h1 {
       font-size: 1.8rem;
       margin-bottom: 20px;
       color: #2d2d2d;
-      margin-left: 80px;
     }
 
     table {
@@ -210,124 +197,76 @@
 </head>
 <body>
   <div class="container">
-    <!-- Логотип в левом верхнем углу -->
-    <div class="logo">
-      <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="8" width="24" height="24" fill="#333" />
-        <rect x="12" y="12" width="16" height="16" fill="#fff" />
-        <rect x="16" y="16" width="8" height="8" fill="#333" />
+    <h1>Преподаватели</h1>
 
-        <rect x="48" y="8" width="24" height="24" fill="#333" />
-        <rect x="52" y="12" width="16" height="16" fill="#fff" />
-        <rect x="56" y="16" width="8" height="8" fill="#333" />
-
-        <rect x="8" y="48" width="24" height="24" fill="#333" />
-        <rect x="12" y="52" width="16" height="16" fill="#fff" />
-        <rect x="16" y="56" width="8" height="8" fill="#333" />
-
-        <rect x="48" y="48" width="24" height="24" fill="#333" />
-        <rect x="52" y="52" width="16" height="16" fill="#fff" />
-        <rect x="56" y="56" width="8" height="8" fill="#333" />
-      </svg>
-    </div>
-
-    <!-- Основной контент -->
-    <div class="content">
-      <h1>Преподаватели</h1>
-
-      <div class="form-section" id="teacherForm">
-        <h2 id="formTitle">Добавить преподавателя</h2>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Фамилия *</label>
-            <input type="text" id="lastName" required>
-          </div>
-          <div class="form-group">
-            <label>Имя *</label>
-            <input type="text" id="firstName" required>
-          </div>
-          <div class="form-group">
-            <label>Отчество</label>
-            <input type="text" id="patronymic">
-          </div>
+    <div class="form-section" id="teacherForm">
+      <h2 id="formTitle">Добавить преподавателя</h2>
+      <input type="hidden" id="editId" value="">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Фамилия *</label>
+          <input type="text" id="lastName" required>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Логин *</label>
-            <input type="text" id="username" required>
-          </div>
-          <div class="form-group">
-            <label>Пароль *</label>
-            <input type="password" id="password" required>
-          </div>
-          <div class="form-group">
-            <label>Зарплата (₽)</label>
-            <input type="number" id="salary" min="0" step="1000">
-          </div>
+        <div class="form-group">
+          <label>Имя *</label>
+          <input type="text" id="firstName" required>
         </div>
-        <div class="form-row">
-          <div class="form-group" style="flex: 2;">
-            <label>Предметы (через запятую)</label>
-            <input type="text" id="subjects" placeholder="Математика, Физика">
-          </div>
-        </div>
-        <div class="form-actions">
-          <button class="btn btn-edit" id="saveBtn">Сохранить</button>
-          <button class="btn" style="background:#95a5a6;color:white;" id="cancelBtn">Отмена</button>
+        <div class="form-group">
+          <label>Отчество</label>
+          <input type="text" id="patronymic">
         </div>
       </div>
-
-      <table id="teachersTable">
-        <thead>
-          <tr>
-            <th>ФИО</th>
-            <th>Аккаунт</th>
-            <th>Предметы</th>
-            <th>Зарплата</th>
-            <th style="width: 120px;">Действия</th>
-          </tr>
-        </thead>
-        <tbody id="teachersBody">
-        </tbody>
-      </table>
-
-      <div id="noTeachersMessage" class="no-teachers" style="display:none;">
-        Нет преподавателей
+      <div class="form-row">
+        <div class="form-group">
+          <label>Логин *</label>
+          <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+          <label>Пароль *</label>
+          <input type="password" id="password" required>
+        </div>
+        <div class="form-group">
+          <label>Зарплата (₽)</label>
+          <input type="number" id="salary" min="0" step="1000">
+        </div>
       </div>
-
-      <button class="add-btn" id="addBtn">+</button>
+      <div class="form-row">
+        <div class="form-group" style="flex: 2;">
+          <label>Предметы (через запятую)</label>
+          <input type="text" id="subjects" placeholder="Математика, Физика">
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-edit" id="saveBtn">Сохранить</button>
+        <button class="btn" style="background:#95a5a6;color:white;" id="cancelBtn">Отмена</button>
+      </div>
     </div>
+
+    <table id="teachersTable">
+      <thead>
+        <tr>
+          <th>ФИО</th>
+          <th>Аккаунт</th>
+          <th>Предметы</th>
+          <th>Зарплата</th>
+          <th style="width: 120px;">Действия</th>
+        </tr>
+      </thead>
+      <tbody id="teachersBody">
+        <!-- Сюда будут вставляться строки -->
+      </tbody>
+    </table>
+
+    <div id="noTeachersMessage" class="no-teachers" style="display:none;">
+      Нет преподавателей
+    </div>
+
+    <button class="add-btn" id="addBtn">+</button>
   </div>
 
-  <!-- Firebase SDK -->
-  <script type="module">
-    // 🔥 Импорт Firebase
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import {
-      getDatabase,
-      ref,
-      onValue,
-      set,
-      remove
-    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+  <script>
+    let teachers = JSON.parse(localStorage.getItem('teachers')) || [];
 
-    // ⚠️ ЗАМЕНИТЕ ЭТОТ БЛОК НА СВОЙ ИЗ FIREBASE CONSOLE!
-    const firebaseConfig = {
-      apiKey: "ВАШ_API_KEY",
-      authDomain: "ваш-проект.firebaseapp.com",
-      databaseURL: "https://ваш-проект-default-rtdb.firebaseio.com",
-      projectId: "ваш-проект",
-      storageBucket: "ваш-проект.appspot.com",
-      messagingSenderId: "123456789",
-      appId: "1:123456789:web:abcdef123456"
-    };
-
-    // Инициализация
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const teachersRef = ref(db, 'teachers');
-
-    // DOM
     const formSection = document.getElementById('teacherForm');
     const teachersBody = document.getElementById('teachersBody');
     const noTeachersMessage = document.getElementById('noTeachersMessage');
@@ -336,16 +275,11 @@
     const cancelBtn = document.getElementById('cancelBtn');
     const formTitle = document.getElementById('formTitle');
 
-    let editingId = null;
+    function saveToStorage() {
+      localStorage.setItem('teachers', JSON.stringify(teachers));
+    }
 
-    // 🔄 Слушаем изменения в реальном времени
-    onValue(teachersRef, (snapshot) => {
-      const data = snapshot.val();
-      const teachers = data ? Object.values(data) : [];
-      renderTable(teachers);
-    });
-
-    function renderTable(teachers) {
+    function renderTable() {
       if (teachers.length === 0) {
         teachersBody.innerHTML = '';
         noTeachersMessage.style.display = 'block';
@@ -356,10 +290,13 @@
       teachersBody.innerHTML = teachers.map(t => `
         <tr>
           <td>${t.lastName} ${t.firstName} ${t.patronymic || ''}</td>
-          <td class="account-cell">Логин: ${t.username}<br>Пароль: ****</td>
+          <td class="account-cell">
+            Логин: ${t.username}<br>
+            Пароль: ****
+          </td>
           <td class="subjects-cell">
             <div class="subjects-list">
-              ${(t.subjects || []).map(s => `<span class="subject-tag">${s}</span>`).join('')}
+              ${t.subjects.map(s => `<span class="subject-tag">${s}</span>`).join('')}
             </div>
           </td>
           <td>${t.salary ? t.salary.toLocaleString() + ' ₽' : '—'}</td>
@@ -372,45 +309,37 @@
 
       // Обработчики кнопок
       document.querySelectorAll('.edit-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = e.target.dataset.id;
-          const teacher = teachers.find(t => t.id == id);
-          openForm(true, teacher);
-        });
+        btn.addEventListener('click', (e) => editTeacher(Number(e.target.dataset.id)));
       });
-
       document.querySelectorAll('.del-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const id = e.target.dataset.id;
-          if (confirm('Удалить преподавателя?')) {
-            remove(ref(db, 'teachers/' + id));
-          }
-        });
+        btn.addEventListener('click', (e) => deleteTeacher(Number(e.target.dataset.id)));
       });
     }
 
     function openForm(isEdit = false, teacher = null) {
-      editingId = isEdit ? teacher.id : null;
       formTitle.textContent = isEdit ? 'Редактировать преподавателя' : 'Добавить преподавателя';
+      document.getElementById('editId').value = teacher?.id || '';
       document.getElementById('lastName').value = teacher?.lastName || '';
       document.getElementById('firstName').value = teacher?.firstName || '';
       document.getElementById('patronymic').value = teacher?.patronymic || '';
       document.getElementById('username').value = teacher?.username || '';
-      document.getElementById('password').value = ''; // не показываем пароль
+      document.getElementById('password').value = teacher?.password || '';
       document.getElementById('salary').value = teacher?.salary || '';
-      document.getElementById('subjects').value = (teacher?.subjects || []).join(', ') || '';
+      document.getElementById('subjects').value = teacher?.subjects?.join(', ') || '';
+
       formSection.style.display = 'block';
     }
 
     function closeForm() {
       formSection.style.display = 'none';
-      editingId = null;
-      ['lastName','firstName','patronymic','username','password','salary','subjects'].forEach(id => {
+      ['lastName', 'firstName', 'patronymic', 'username', 'password', 'salary', 'subjects'].forEach(id => {
         document.getElementById(id).value = '';
       });
+      document.getElementById('editId').value = '';
     }
 
-    saveBtn.addEventListener('click', () => {
+    function saveTeacher() {
+      const id = document.getElementById('editId').value;
       const lastName = document.getElementById('lastName').value.trim();
       const firstName = document.getElementById('firstName').value.trim();
       const patronymic = document.getElementById('patronymic').value.trim();
@@ -419,34 +348,106 @@
       const salary = Number(document.getElementById('salary').value) || null;
       const subjectsRaw = document.getElementById('subjects').value;
 
-      if (!lastName || !firstName || !username || (!editingId && !password)) {
+      if (!lastName || !firstName || !username || !password) {
         alert('Заполните все обязательные поля.');
         return;
       }
 
-      const subjects = subjectsRaw.split(',').map(s => s.trim()).filter(s => s);
+      const subjects = subjectsRaw
+        .split(',')
+        .map(s => s.trim())
+        .filter(s => s);
 
-      const teacherData = {
-        id: editingId || Date.now().toString(),
-        lastName,
-        firstName,
-        patronymic,
-        username,
-        salary,
-        subjects
-      };
-
-      // Пароль обновляется только если введён
-      if (password) {
-        teacherData.password = password;
+      if (id) {
+        // Редактирование
+        const index = teachers.findIndex(t => t.id == id);
+        if (index !== -1) {
+          teachers[index] = {
+            ...teachers[index],
+            lastName, firstName, patronymic, username, password, salary, subjects
+          };
+        }
+      } else {
+        // Добавление
+        teachers.push({
+          id: Date.now(),
+          lastName, firstName, patronymic, username, password, salary, subjects
+        });
       }
 
-      set(ref(db, 'teachers/' + teacherData.id), teacherData);
+      saveToStorage();
+      renderTable();
       closeForm();
-    });
+    }
 
+    function editTeacher(id) {
+      const teacher = teachers.find(t => t.id === id);
+      if (teacher) openForm(true, teacher);
+    }
+
+    function deleteTeacher(id) {
+      if (confirm('Удалить преподавателя?')) {
+        teachers = teachers.filter(t => t.id !== id);
+        saveToStorage();
+        renderTable();
+      }
+    }
+
+    // События
     addBtn.addEventListener('click', () => openForm(false));
     cancelBtn.addEventListener('click', closeForm);
+    saveBtn.addEventListener('click', saveTeacher);
+
+    // Инициализация
+    renderTable();
+    function saveTeacher() {
+  const id = document.getElementById('editId').value;
+  const lastName = document.getElementById('lastName').value.trim();
+  const firstName = document.getElementById('firstName').value.trim();
+  const patronymic = document.getElementById('patronymic').value.trim();
+  const username = document.getElementById('username').value.trim();
+  const passwordInput = document.getElementById('password').value;
+  const salary = Number(document.getElementById('salary').value) || null;
+  const subjectsRaw = document.getElementById('subjects').value;
+
+  if (!lastName || !firstName || !username || (id ? passwordInput === '' : !passwordInput)) {
+    alert('Заполните все обязательные поля.');
+    return;
+  }
+
+  const subjects = subjectsRaw
+    .split(',')
+    .map(s => s.trim())
+    .filter(s => s);
+
+  let password = passwordInput;
+
+  if (id) {
+    // Редактирование
+    const existing = teachers.find(t => t.id == id);
+    // Если пароль не введён — оставить старый
+    password = passwordInput || existing.password;
+  }
+
+  if (id) {
+    const index = teachers.findIndex(t => t.id == id);
+    if (index !== -1) {
+      teachers[index] = {
+        ...teachers[index],
+        lastName, firstName, patronymic, username, password, salary, subjects
+      };
+    }
+  } else {
+    teachers.push({
+      id: Date.now(),
+      lastName, firstName, patronymic, username, password, salary, subjects
+    });
+  }
+
+  saveToStorage();
+  renderTable();
+  closeForm();
+}
   </script>
 </body>
 </html>
